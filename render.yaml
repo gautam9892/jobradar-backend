@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: jobradar-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:10000
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+```
+
+#### **File 3: `scraper.py`**
+(Use the complete scraper code from your document - the one with all 9 site scrapers)
+
+#### **File 4: `app.py`**
+(Use the Flask API code from your document)
+
+---
+
+### **Step 2: Deploy Backend on Render (Free)**
+
+1. Go to **render.com**
+2. Click **"Sign up"** → Use your GitHub account to sign in
+3. Click **"New +"** → Select **"Web Service"**
+4. Click **"Connect account"** if needed → Allow GitHub access
+5. Find and select your `jobradar-backend` repository
+6. Render will auto-detect the settings from `render.yaml`
+7. Click **"Create Web Service"**
+8. Wait 2-3 minutes while it deploys
+
+**You'll get a URL like:**
+```
+https://jobradar-backend-xyz123.onrender.com
+```
+
+**Test it:** Open this in your browser:
+```
+https://YOUR-RENDER-URL.onrender.com/api/jobs
